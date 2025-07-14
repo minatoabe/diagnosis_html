@@ -1,0 +1,14 @@
+pre-commit:
+  # parallelにすると並列実行される。
+  parallel: true
+  commands:
+    prettier:
+      # 対象のファイル
+      glob: "*.{vue,tsx,ts,mts,mcs,mjs,cjs,js,json,md,yml,yaml}"
+      run: |
+        npx prettier --write {staged_files}
+      stage_fixed: true
+      # マージ、リベースの際はこの処理をスキップしている。
+      skip:
+        - merge
+        - rebase
